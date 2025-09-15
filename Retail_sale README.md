@@ -151,7 +151,7 @@ Customer Growth → Signups over time
 
 
 👉 The dashboard provides an executive view of business performance at a glance.
-
-
+LINK:- [
+](https://public.tableau.com/views/ASTROTALKCLIENTDASHBOARDUSINGSQLTABLEAU/ASTROTALK?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 
