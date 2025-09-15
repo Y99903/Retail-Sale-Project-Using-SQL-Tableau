@@ -1,4 +1,3 @@
-
 Retail Sale queries
 
 1.⁠ ⁠Total Sales
