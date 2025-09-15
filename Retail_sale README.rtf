@@ -1,161 +1,157 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+Retail Sales SQL + Tableau Project
 
-\f0\b\fs48 \cf0 \ul \ulc0 Retail Sales SQL + Tableau Project
-\f1\b0\fs24 \ulnone \
-\
-\uc0\u55357 \u56524  Overview\
-\
-This project demonstrates the design and implementation of a Retail Sales Database in MySQL, followed by the creation of an interactive Tableau Dashboard to visualize key business insights.\
-\
-I created the schema, inserted data, built indexes, wrote analytical queries, and finally connected the database to Tableau to present sales trends, top-performing products, and store-wise performance.\
-\
-\
----\
-\
-\uc0\u55356 \u57303 \u65039  Database Design\
-\
-The project contains the following tables:\
-\
-1.\uc0\u8288  \u8288 Customers\
-\
-customer_id (PK, Auto Increment)\
-\
-customer_name\
-\
-city\
-\
-country\
-\
-signup_date\
-\
-\
-\
-2.\uc0\u8288  \u8288 Products\
-\
-product_id (PK, Auto Increment)\
-\
-product_name\
-\
-category\
-\
-price\
-\
-\
-\
-3.\uc0\u8288  \u8288 Stores\
-\
-store_id (PK, Auto Increment)\
-\
-store_name\
-\
-region\
-\
-\
-\
-4.\uc0\u8288  \u8288 Orders\
-\
-order_id (PK, Auto Increment)\
-\
-order_date\
-\
-customer_id (FK \uc0\u8594  Customers)\
-\
-total_amount\
-\
-\
-\
-5.\uc0\u8288  \u8288 Order Items\
-\
-order_item_id (PK, Auto Increment)\
-\
-order_id (FK \uc0\u8594  Orders)\
-\
-product_id (FK \uc0\u8594  Products)\
-\
-quantity\
-\
-unit_price\
-\
-\
-\
-\
-\
----\
-\
-\uc0\u9881 \u65039  Key Implementation Steps\
-\
-Created database: retail_sale\
-\
-Defined schema with PKs & FKs\
-\
-Inserted sample data for customers, products, stores, orders & order items\
-\
-Created index on orders(order_date)\
-\
-Wrote SQL queries for sales analytics\
-\
-Connected database to Tableau for professional dashboards\
-\
-\
-\
----\
-\
-\uc0\u55357 \u56589  SQL Queries Performed\
-\
-1.\uc0\u8288  \u8288 Total Sales\
-\
-SELECT SUM(total_amount) AS total_sales FROM orders;\
-\
-\
-2.\uc0\u8288  \u8288 Monthly Sales Trend\
-\
-SELECT \
-    MONTH(order_date) AS month, \
-    SUM(total_amount) AS monthly_sales\
-FROM orders\
-GROUP BY MONTH(order_date);\
-\
-\
-3.\uc0\u8288  \u8288 Product List (Price Order)\
-\
-SELECT product_name, price \
-FROM products\
-ORDER BY product_name DESC;\
-\
-\
-4.\uc0\u8288  \u8288 Product Revenue (with JOIN)\
-\
-SELECT \
-    p.product_name, \
-    SUM(oi.quantity * oi.unit_price) AS total_revenue\
-FROM order_items oi\
-JOIN products p ON oi.product_id = p.product_id\
-GROUP BY p.product_name\
-ORDER BY total_revenue DESC;\
-\
-\
-\
-\
----\
-\
-\uc0\u55357 \u56522  Tableau Dashboard\
-\
-Key Features:\
-\
-KPI Cards \uc0\u8594  Total Sales, Total Orders, Total Customers\
-\
-Monthly Sales Trend \uc0\u8594  Line chart of sales over time\
-\
-Top Products by Revenue \uc0\u8594  Bar chart with product contribution\
-\
-Store-wise Sales Performance \uc0\u8594  Region/store sales breakdown\
-\
-Customer Growth \uc0\u8594  Signups over time\
-\
-\
-\uc0\u55357 \u56393  The dashboard provides an executive view of business performance at a glance.}
+📌 Overview
+
+This project demonstrates the design and implementation of a Retail Sales Database in MySQL, followed by the creation of an interactive Tableau Dashboard to visualize key business insights.
+
+I created the schema, inserted data, built indexes, wrote analytical queries, and finally connected the database to Tableau to present sales trends, top-performing products, and store-wise performance.
+
+
+---
+
+🏗️ Database Design
+
+The project contains the following tables:
+
+1.⁠ ⁠Customers
+
+customer_id (PK, Auto Increment)
+
+customer_name
+
+city
+
+country
+
+signup_date
+
+
+
+2.⁠ ⁠Products
+
+product_id (PK, Auto Increment)
+
+product_name
+
+category
+
+price
+
+
+
+3.⁠ ⁠Stores
+
+store_id (PK, Auto Increment)
+
+store_name
+
+region
+
+
+
+4.⁠ ⁠Orders
+
+order_id (PK, Auto Increment)
+
+order_date
+
+customer_id (FK → Customers)
+
+total_amount
+
+
+
+5.⁠ ⁠Order Items
+
+order_item_id (PK, Auto Increment)
+
+order_id (FK → Orders)
+
+product_id (FK → Products)
+
+quantity
+
+unit_price
+
+
+
+
+
+---
+
+⚙️ Key Implementation Steps
+
+Created database: retail_sale
+
+Defined schema with PKs & FKs
+
+Inserted sample data for customers, products, stores, orders & order items
+
+Created index on orders(order_date)
+
+Wrote SQL queries for sales analytics
+
+Connected database to Tableau for professional dashboards
+
+
+
+---
+
+🔍 SQL Queries Performed
+
+1.⁠ ⁠Total Sales
+
+SELECT SUM(total_amount) AS total_sales FROM orders;
+
+
+2.⁠ ⁠Monthly Sales Trend
+
+SELECT 
+    MONTH(order_date) AS month, 
+    SUM(total_amount) AS monthly_sales
+FROM orders
+GROUP BY MONTH(order_date);
+
+
+3.⁠ ⁠Product List (Price Order)
+
+SELECT product_name, price 
+FROM products
+ORDER BY product_name DESC;
+
+
+4.⁠ ⁠Product Revenue (with JOIN)
+
+SELECT 
+    p.product_name, 
+    SUM(oi.quantity * oi.unit_price) AS total_revenue
+FROM order_items oi
+JOIN products p ON oi.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_revenue DESC;
+
+
+
+
+---
+
+📊 Tableau Dashboard
+
+Key Features:
+
+KPI Cards → Total Sales, Total Orders, Total Customers
+
+Monthly Sales Trend → Line chart of sales over time
+
+Top Products by Revenue → Bar chart with product contribution
+
+Store-wise Sales Performance → Region/store sales breakdown
+
+Customer Growth → Signups over time
+
+
+👉 The dashboard provides an executive view of business performance at a glance.
+
+
+
+
